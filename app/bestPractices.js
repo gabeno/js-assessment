@@ -35,6 +35,19 @@ define(function() {
       // }
 
       return getValue();
+
+      // official solution:
+      // ------------------
+      //
+      // var getValue;
+            
+      // if (flag) {
+      //   getValue = function() { return "a"; }
+      // } else {
+      //   getValue = function() { return "b"; }
+      // }
+
+      // return getValue();
     },
 
     parseInt : function(num) {

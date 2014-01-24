@@ -40,7 +40,8 @@ define(function() {
     },
 
     identity : function(val1, val2) {
-
+      // LESSON: use strict comparison with vigour
+      return val1 === val2;
     }
   };
 });

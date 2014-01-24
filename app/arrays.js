@@ -57,7 +57,14 @@ define(function() {
     },
 
     count : function(arr, item) {
+        var count = 0, i = 0;
 
+        for(; i < arr.length; i++) {
+            if (arr[i] == item)
+                count++;
+        }
+
+        return count;
     },
 
     duplicates : function(arr) {

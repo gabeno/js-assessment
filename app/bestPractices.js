@@ -16,11 +16,19 @@ define(function() {
     },
 
     functions : function(flag) {
-      if (flag) {
-        function getValue() { return 'a'; }
-      } else {
-        function getValue() { return 'b'; }
+      function getValue() {
+        if (flag)
+          return 'a';
+        else
+          return 'b';
       }
+
+      // LESSON: avoid using function declarations in control flow
+      // if (flag) {
+      //   function getValue() { return 'a'; }
+      // } else {
+      //   function getValue() { return 'b'; }
+      // }
 
       return getValue();
     },

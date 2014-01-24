@@ -59,7 +59,9 @@ define(function() {
     },
 
     square : function(arr) {
-
+        return arr.map(function(item) {
+            return item * item;
+        });
     },
 
     findAllOccurrences : function(arr, target) {

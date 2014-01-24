@@ -8,7 +8,11 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function() {
   return {
     globals : function() {
-      myObject = {
+      // LESSON: always use var keyword
+      // myObject = {
+      //   name : 'Jory'
+      // };
+      var myObject = {
         name : 'Jory'
       };
 

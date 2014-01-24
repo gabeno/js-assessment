@@ -47,7 +47,8 @@ define(function() {
     },
 
     insert : function(arr, item, index) {
-
+        arr.splice(index, 0, item);
+        return arr;
     },
 
     count : function(arr, item) {

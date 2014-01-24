@@ -34,7 +34,9 @@ define(function() {
     },
 
     parseInt : function(num) {
-      return parseInt(num);
+      // LESSON: avoid using parseInt() w/o radix
+      // return parseInt(num);
+      return parseInt(num, 10);
     },
 
     identity : function(val1, val2) {

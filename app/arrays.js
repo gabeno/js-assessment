@@ -60,7 +60,7 @@ define(function() {
         var count = 0, i = 0;
 
         for(; i < arr.length; i++) {
-            if (arr[i] == item)
+            if (arr[i] === item)
                 count++;
         }
 

@@ -37,7 +37,8 @@ define(function() {
     },
 
     prepend : function(arr, item) {
-
+        arr.unshift(item);
+        return arr;
     },
 
     curtail : function(arr) {

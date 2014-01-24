@@ -43,7 +43,8 @@ define(function() {
     },
 
     concat : function(arr1, arr2) {
-
+        var arr = arr1.concat(arr2);
+        return arr;
     },
 
     insert : function(arr, item, index) {

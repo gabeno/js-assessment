@@ -7,7 +7,15 @@ define(function() {
     },
 
     sum : function(arr) {
-
+        // var i, sum = 0;
+        // for (i = 0; i < arr.length; i++) {
+        //     sum += arr[i];
+        // }
+        // return sum;
+        
+        return arr.reduce(function (a, b) {
+            return a + b;
+        }, 0);
     },
 
     remove : function(arr, item) {

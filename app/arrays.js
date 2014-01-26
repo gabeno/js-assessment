@@ -73,7 +73,16 @@ define(function() {
     },
 
     duplicates : function(arr) {
+        var dups = [];
 
+        for(var i = 0; i < arr.length; i++) {
+             // check if value exists in another pos thats not current pos
+            if ((arr.indexOf(arr[i]) !== -1 && arr.indexOf(arr[i]) !== i) &&
+                dups.indexOf(arr[i]) === -1) // and not in dups
+                dups.push(arr[i]);
+        }
+
+        return dups;
     },
 
     square : function(arr) {

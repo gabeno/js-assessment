@@ -11,7 +11,13 @@ define(function() {
     },
 
     iterate : function(obj) {
+      var props = [];
+      var keys = Object.keys(obj);
 
+      for(var i = 0; i < keys.length; i++)
+        props.push(keys[i] + ': ' + obj[keys[i]]);
+
+      return props;
     }
   };
 });

@@ -92,7 +92,14 @@ define(function() {
     },
 
     findAllOccurrences : function(arr, target) {
+        var idxs = [];
 
+        for(var i = 0; i < arr.length; i++) {
+            if (arr[i] === target)
+                idxs.push(i);
+        }
+
+        return idxs;
     }
   };
 });

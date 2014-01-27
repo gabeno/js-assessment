@@ -25,7 +25,21 @@ define(function() {
     },
 
     useArguments : function() {
+        // OPTION 1: use length property of arguments
+        // var sum = 0,
+        //     i = 0,
+        //     n = arguments.length;
 
+        // for(; i < n; i++)
+        //     sum += arguments[i];
+
+        // return sum;
+
+        // OPTION 2: use ECMA5 array methods
+        var args = [].slice.call(arguments); // true array
+        return args.reduce(function(a, b) {
+            return a + b;
+        }, 0);
     },
 
     callIt : function(fn) {

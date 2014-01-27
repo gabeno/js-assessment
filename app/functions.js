@@ -17,7 +17,17 @@ define(function() {
     },
 
     makeClosures : function(arr, fn) {
+        var closures = [];
 
+        for(var i = 0; i < arr.length; i++) {
+            (function(n){
+                closures[i] = function() {
+                    return fn(n);
+                };
+            }(arr[i])); // pass in each value on iteration
+        }
+
+        return closures;
     },
 
     partial : function(fn, str1, str2) {

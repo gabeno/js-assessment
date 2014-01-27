@@ -13,18 +13,26 @@ define(function() {
     functionFunction : function(str) {
         return function(str1) {
             return str+ ', ' +str1;
-        }
+        };
     },
 
     makeClosures : function(arr, fn) {
         var closures = [];
 
         for(var i = 0; i < arr.length; i++) {
-            (function(n){
-                closures[i] = function() {
+            // OPTION 1:
+            // (function(n){
+            //     closures[i] = function() { // <= closure
+            //         return fn(n);
+            //     };
+            // }(arr[i])); // pass in each value on iteration
+
+            // OPTION 2:
+            closures[i] = (function(n) {
+                return function() { // <= closure
                     return fn(n);
                 };
-            }(arr[i])); // pass in each value on iteration
+            }( arr[i] ));
         }
 
         return closures;

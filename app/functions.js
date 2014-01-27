@@ -7,7 +7,7 @@ define(function() {
     },
 
     speak : function(fn, obj) {
-
+        return fn.bind(obj)();
     },
 
     functionFunction : function(str) {

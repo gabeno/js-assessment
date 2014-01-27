@@ -7,7 +7,7 @@ define(function() {
     },
 
     and : function(a, b) {
-
+      return a && b;
     }
   };
 });

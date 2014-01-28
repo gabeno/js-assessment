@@ -12,7 +12,8 @@ define(function() {
     },
 
     endsWithVowel : function(str) {
-
+        var pattern = /[a,e,i,o,u]$/i;
+        return pattern.test(str);
     },
 
     captureThreeNumbers : function(str) {

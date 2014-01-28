@@ -73,7 +73,9 @@ define(function() {
     },
 
     callIt : function(fn) {
-
+        // function arity
+        var args = [].slice.call(arguments, 1);
+        return fn.apply(null, args);
     },
 
     partialUsingArguments : function(fn) {

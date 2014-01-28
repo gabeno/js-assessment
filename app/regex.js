@@ -17,7 +17,11 @@ define(function() {
     },
 
     captureThreeNumbers : function(str) {
-
+        var pattern = /(\d){3}/;
+        var result = pattern.exec(str);
+        if (!result)
+            return false;
+        return result[0];
     },
 
     matchesPattern : function(str) {

@@ -79,7 +79,12 @@ define(function() {
     },
 
     partialUsingArguments : function(fn) {
-
+        var argsOuter = [].slice.call(arguments, 1);
+        return function() {
+            var argsInner = [].slice.call(arguments);
+            var args = argsOuter.concat(argsInner);
+            return fn.apply(null, args);
+        };
     },
 
     curryIt : function(fn) {

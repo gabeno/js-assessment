@@ -39,18 +39,26 @@ define(function() {
     },
 
     partial : function(fn, str1, str2) {
+        // *Over Design*
+        // 
         // context 1 for arguments
         // cache them in an array except the first arg, fn
-        var argsOuter = [].slice.call(arguments, 1);
+        // var argsOuter = [].slice.call(arguments, 1);
+        // return function() {
+        //     // context 2 for arguments from lambda function
+        //     // cache all of them in an array
+        //     var argsInner = [].slice.call(arguments);
+        //     // combine all args into one array
+        //     // set fn to invoke with the combined args
+        //     var args = argsOuter.concat(argsInner);
+        //     // 'this' is not set
+        //     return fn.apply(null, args);
+        // };
+
+        // *minimal design*
         return function() {
-            // context 2 for arguments from lambda function
-            // cache all of them in an array
-            var argsInner = [].slice.call(arguments);
-            // combine all args into one array
-            // set fn to invoke with the combined args
-            var args = argsOuter.concat(argsInner);
-            // 'this' is not set
-            return fn.apply(null, args);
+            var arg = [].slice.call(arguments).join();
+            return fn.call(null, str1, str2, arg);
         };
     },
 

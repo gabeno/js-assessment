@@ -21,7 +21,8 @@ define(function() {
     },
 
     matchesPattern : function(str) {
-
+        var pattern = /^(\d){3}-(\d){3}-(\d){4}$/;
+        return pattern.test(str);
     },
     isUSD : function(str) {
 

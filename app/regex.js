@@ -24,8 +24,10 @@ define(function() {
         var pattern = /^(\d){3}-(\d){3}-(\d){4}$/;
         return pattern.test(str);
     },
-    isUSD : function(str) {
 
+    isUSD : function(str) {
+        var pattern = /^\$(?:[0-9]{1,3}){1}(?:,[0-9]{3})*(?:\.[0-9]{2})?$/;
+        return pattern.test(str);
     }
   };
 });

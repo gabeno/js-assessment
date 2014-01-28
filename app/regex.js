@@ -17,8 +17,9 @@ define(function() {
     },
 
     captureThreeNumbers : function(str) {
-        var pattern = /(\d){3}/;
-        var result = pattern.exec(str);
+        var pattern = /(\d){3}/g;
+        // var result = pattern.exec(str);
+        var result = str.match(pattern);
         if (!result)
             return false;
         return result[0];

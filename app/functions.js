@@ -8,6 +8,7 @@ define(function() {
 
     speak : function(fn, obj) {
         return fn.bind(obj)();
+        // return fn.call(obj); // solution
     },
 
     functionFunction : function(str) {
@@ -83,20 +84,47 @@ define(function() {
     callIt : function(fn) {
         // function arity
         var args = [].slice.call(arguments, 1);
+        // var args = Array.prototype.slice.call(arguments, 1, arguments.length); // solution
         return fn.apply(null, args);
     },
 
     partialUsingArguments : function(fn) {
         var argsOuter = [].slice.call(arguments, 1);
         return function() {
-            var argsInner = [].slice.call(arguments);
-            var args = argsOuter.concat(argsInner);
+            var args = argsOuter.concat([].slice.call(arguments));
             return fn.apply(null, args);
         };
+
+        // solution
+        // var args = Array.prototype.slice.call(arguments, 1, arguments.length);
+        // return function() {
+        //     var moreArgs = args.concat(Array.prototype.slice.call(arguments));
+        //     return fn.apply(null, moreArgs);
+        // };
     },
 
     curryIt : function(fn) {
+        // was a nightmare for me
+        // solution
+        function applyArguments(fn, arguments) {
+            return fn.apply(null, arguments);
+        }
 
+        function getArgumentAccumulator(accumulatedArguments, expectedArgumentsCount) {
+            return function (currentArgument) {
+              accumulatedArguments.push(currentArgument);
+
+              var allArgumentsProvided = accumulatedArguments.length === expectedArgumentsCount;
+
+              if (allArgumentsProvided) {
+                return applyArguments(fn, accumulatedArguments);
+              } else {
+                return getArgumentAccumulator(accumulatedArguments, expectedArgumentsCount);
+              }
+            };
+        }
+
+        return getArgumentAccumulator([], fn.length);
     }
   };
 });

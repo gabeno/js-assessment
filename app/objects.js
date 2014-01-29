@@ -4,6 +4,7 @@ define(function() {
   return {
     alterContext : function(fn, obj) {
       return fn.bind(obj)(); // decorate obj w/ fn and call it
+      // return fn.call(obj);
     },
 
     alterObjects : function(constructor, greeting) {
@@ -18,6 +19,17 @@ define(function() {
         props.push(keys[i] + ': ' + obj[keys[i]]);
 
       return props;
+
+      // solution
+      // var ret = [];
+
+      // for (var prop in obj) {
+      //   if (obj.hasOwnProperty(prop)) {
+      //     ret.push(prop + ': ' + obj[prop]);
+      //   }
+      // }
+
+      // return ret;
     }
   };
 });

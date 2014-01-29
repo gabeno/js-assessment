@@ -20,15 +20,20 @@ define(function() {
 
     remove : function(arr, item) {
         // walk through the array and delete any occurence of item
-        for (var i = 0; i < arr.length; i++)
-            if (arr[i] === item)
-                arr.splice(i, 1);
+        // since Array.splice() returns a new array, indices are adjusted
+        // so its best to consider the full length of the array and loop
+        // downwards.
+        for (var i = arr.length; i--; ) // i-- evaluates to falsy when it is zero
+            if (arr[i] === item) arr.splice(i, 1);
 
         return arr;
     },
 
     removeWithoutCopy : function(arr, item) {
+        var arrCopy = arr;
+        var arr = this.remove(arr, item);
 
+        return arrCopy;
     },
 
     append : function(arr, item) {

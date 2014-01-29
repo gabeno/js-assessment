@@ -29,6 +29,26 @@ define(function() {
           return 'buzz';
       }
 
+      // solution
+      // if (typeof num !== 'number') { return false; }
+
+      // // not divisible by 3 or 5
+      // if (num % 3 && num % 5) {
+      //   return num;
+      // }
+
+      // // divisible by 3 but not 5
+      // if (num % 5) {
+      //   return 'fizz';
+      // }
+
+      // // divisible by 5 but not 3
+      // if (num % 3) {
+      //   return 'buzz';
+      // }
+
+      // // divisible by 5 and 3
+      // return 'fizzbuzz';
     }
   };
 });

@@ -3,19 +3,28 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function() {
   return {
     indexOf : function(arr, item) {
-        return arr.indexOf(item);
+        // if (Array.prototype.indexOf)
+            return arr.indexOf(item);
+
+        // solution
+        // for(var i = 0, len = arr.length; i < len) {
+        //     if (arr[i] === item) return 1;
+        // }
+
+        // return -1;
     },
 
     sum : function(arr) {
-        // var i, sum = 0;
-        // for (i = 0; i < arr.length; i++) {
-        //     sum += arr[i];
-        // }
-        // return sum;
+        var i, sum = 0;
+        for (i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
         
-        return arr.reduce(function (a, b) {
-            return a + b;
-        }, 0);
+        // using ECMAScript5 method reduce()
+        // return arr.reduce(function (a, b) {
+        //     return a + b;
+        // }, 0);
     },
 
     remove : function(arr, item) {
@@ -27,13 +36,33 @@ define(function() {
             if (arr[i] === item) arr.splice(i, 1);
 
         return arr;
+
+        // solution
+        // var ret = [];
+
+        // for (var i = 0, len = arr.length; i < len; i++) {
+        //     if (arr[i] !== item) ret.push(arr[i]);
+        // }
+
+        // return ret;
     },
 
     removeWithoutCopy : function(arr, item) {
-        var arrCopy = arr;
         var arr = this.remove(arr, item);
+        return arr;
 
-        return arrCopy;
+        // solution
+        // var i, len;
+
+        // for (i = 0, len = arr.length; i < len; i++) {
+        //   if (arr[i] === item) {
+        //     arr.splice(i, 1);
+        //     i = i - 1;
+        //     len = len - 1;
+        //   }
+        // }
+
+        // return arr;
     },
 
     append : function(arr, item) {
@@ -88,20 +117,44 @@ define(function() {
         }
 
         return dups;
+
+        // solution
+        // var seen = {};
+        // var dupes = [];
+
+        // for (var i = 0, len = arr.length; i < len; i++) {
+        //   seen[arr[i]] = seen[arr[i]] ? seen[arr[i]] + 1 : 1;
+        // }
+
+        // for (var item in seen) {
+        //   if (seen.hasOwnProperty(item) && seen[item] > 1) {
+        //     dupes.push(item);
+        //   }
+        // }
+
+        // return dupes;
     },
 
     square : function(arr) {
         return arr.map(function(item) {
             return item * item;
         });
+
+        // solution
+        // var ret = [];
+
+        // for (var i = 0, len = arr.length; i < len; i++) {
+        //     ret.push(arr[i] * arr[i]);
+        // }
+
+        // return ret;
     },
 
     findAllOccurrences : function(arr, target) {
         var idxs = [];
 
         for(var i = 0; i < arr.length; i++) {
-            if (arr[i] === target)
-                idxs.push(i);
+            if (arr[i] === target) idxs.push(i);
         }
 
         return idxs;

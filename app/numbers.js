@@ -20,7 +20,9 @@ define(function() {
 
         var index, bitMask, bin = [];
 
+        //  8-bit string                           shift right    control
         for(bitMask = 128, index = 0; bitMask > 0; bitMask >>= 1, index++)
+            // num converted to 8 bit
             bin.push((bitMask & num) ? 1 : 0)
 
         return bin.join('');

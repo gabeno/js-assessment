@@ -7,7 +7,7 @@ define(function() {
     },
 
     base10: function(str) {
-
+        return parseInt(str, 2);
     },
 
     convertToBinary: function(num) {

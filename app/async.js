@@ -5,6 +5,13 @@ define([ 'jquery' ], function($) {
     async : function(value) {
       var dfd = $.Deferred();
       return dfd.resolve(value);
+
+      // solution
+      // setTimeout(function() {
+      //   dfd.resolve(value);
+      // }, 10);
+
+      // return dfd.promise();
     },
 
     manipulateRemoteData : function(url) {

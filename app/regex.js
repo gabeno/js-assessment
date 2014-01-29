@@ -3,11 +3,12 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function() {
   return {
     containsNumber : function(str) {
-        var pattern = /(\d+)/;
+        var pattern = /(\d)/;
         return pattern.test(str);
     },
 
     containsRepeatingLetter : function(str) {
+        // var pattern = /([a-zA-Z])\1/; // solution
         var pattern = /(([a-z])\2)/i;
         //             ^^
         //             |+ group 2
@@ -31,15 +32,23 @@ define(function() {
         if (!result)
             return false;
         return result[0];
+
+        // solution
+        // var pattern = /\d{3}/
+        // return result ? result[0] : false
     },
 
     matchesPattern : function(str) {
+        // grouping not necessary
+        // var pattern = /^\d{3}-\d{3}-\d{4}$/; // solution
         var pattern = /^(\d){3}-(\d){3}-(\d){4}$/;
         return pattern.test(str);
     },
 
     isUSD : function(str) {
-        var pattern = /^\$(?:[0-9]{1,3}){1}(?:,[0-9]{3})*(?:\.[0-9]{2})?$/;
+        // var pattern = /^\$\d{1,3}(,\d{3})*(\.\d{2})?$/ // solution
+        // get rid of groupings
+        var pattern = /^\$(?:\d{1,3}){1}(?:,\d{3})*(?:\.\d{2})?$/;
         return pattern.test(str);
     }
   };

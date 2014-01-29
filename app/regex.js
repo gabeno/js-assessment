@@ -8,11 +8,19 @@ define(function() {
     },
 
     containsRepeatingLetter : function(str) {
-
+        var pattern = /(([a-z])\2)/i;
+        //             ^^
+        //             |+ group 2
+        //             + group 1
+        // capture matched part as group
+        // ([a-z]) match any letter and capture as group 2
+        // \2 back reference to the matched group, if character x matched, \2 matches another x
+        // ([a-z])\2+ match repeating characters greedy (return match soonest)
+        return pattern.test(str);
     },
 
     endsWithVowel : function(str) {
-        var pattern = /[a,e,i,o,u]$/i;
+        var pattern = /[aeiou]$/i;
         return pattern.test(str);
     },
 

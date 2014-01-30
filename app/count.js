@@ -3,13 +3,12 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function () {
   return {
     count : function (start, end) {
-      function Counter() {
-        if (start <= end) {
-          console.log(start);
-        }
-        start++;
+      function Counter() { // stateful
+        console.log(start++);
         
-        this.timerId = setTimeout(Counter, 100);
+        if (start <= end) {
+          this.timerId = setTimeout(Counter, 100);
+        }
       }
 
       Counter.prototype.cancel = function() {
@@ -17,6 +16,24 @@ define(function () {
       };
       
       return new Counter();
+
+      // official solution
+      // var timeout;
+      // function doIt () {
+      //   console.log(start++);
+
+      //   if (start <= end) {
+      //     timeout = setTimeout(doIt, 100);
+      //   }
+      // }
+
+      // doIt();
+
+      // return {
+      //   cancel : function () {
+      //     timeout && clearTimeout(timeout);
+      //   }
+      // };
     }
   };
 });
